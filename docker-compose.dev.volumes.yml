@@ -3,3 +3,6 @@ services:
   couchbase:
     volumes:
       - ./couchbase/my_data:/opt/couchbase/var
+  backend:
+    volumes:
+      - ./app/app:/app
