@@ -1658,3 +1658,188 @@
                        {id,13},
                        {method,<<"ServiceAPI.GetCurrentTopology">>},
                        {params,[{[{rev,<<"NA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:58:34.392Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,8},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,false}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:58:34.392Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,10},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:58:34.395Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,9},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:58:34.395Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,11},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:58:35.739Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,12},
+               {<<"result">>,{[{<<"rev">>,<<"MA==">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:58:35.740Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,14},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"MA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:58:36.029Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,13},
+               {<<"result">>,
+                {[{<<"rev">>,<<"NA==">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,true}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:58:36.029Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,15},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"NA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:59:04.360Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,10},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,false}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:59:04.360Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,12},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:59:04.363Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,11},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:59:04.363Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,13},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:59:05.707Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,14},
+               {<<"result">>,{[{<<"rev">>,<<"MA==">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:59:05.708Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,16},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"MA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:59:05.997Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,15},
+               {<<"result">>,
+                {[{<<"rev">>,<<"NA==">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,true}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:59:05.997Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,17},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"NA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:59:34.327Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,12},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,false}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:59:34.328Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,14},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:59:34.331Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,13},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:59:34.331Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,15},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:59:35.677Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,16},
+               {<<"result">>,{[{<<"rev">>,<<"MA==">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:59:35.677Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,18},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"MA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T11:59:35.965Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,17},
+               {<<"result">>,
+                {[{<<"rev">>,<<"NA==">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,true}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T11:59:35.965Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,19},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"NA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T12:00:04.295Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,14},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,false}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T12:00:04.295Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,16},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T12:00:04.299Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,15},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T12:00:04.300Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,17},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T12:00:05.644Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,18},
+               {<<"result">>,{[{<<"rev">>,<<"MA==">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T12:00:05.645Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,20},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"MA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T12:00:05.933Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,19},
+               {<<"result">>,
+                {[{<<"rev">>,<<"NA==">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,true}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T12:00:05.933Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,21},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"NA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T12:00:34.269Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,16},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,false}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T12:00:34.274Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,18},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T12:00:34.276Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,17},
+               {<<"result">>,
+                {[{<<"rev">>,<<"AAAAAAAAAAE=">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T12:00:34.277Z,ns_1@127.0.0.1:json_rpc_connection-index-service_api<0.3793.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,19},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"AAAAAAAAAAE=">>},
+                                  {timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T12:00:35.613Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,20},
+               {<<"result">>,{[{<<"rev">>,<<"MA==">>},{<<"tasks">>,[]}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T12:00:35.613Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,22},
+                       {method,<<"ServiceAPI.GetTaskList">>},
+                       {params,[{[{rev,<<"MA==">>},{timeout,30000}]}]}]}
+[json_rpc:debug,2019-07-04T12:00:35.908Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_info:94]got response: [{<<"id">>,21},
+               {<<"result">>,
+                {[{<<"rev">>,<<"NA==">>},
+                  {<<"nodes">>,[<<"2a8ae539a5cab1af4159b9b57e0098ee">>]},
+                  {<<"isBalanced">>,true}]}},
+               {<<"error">>,null}]
+[json_rpc:debug,2019-07-04T12:00:35.909Z,ns_1@127.0.0.1:json_rpc_connection-fts-service_api<0.762.0>:json_rpc_connection:handle_call:158]sending jsonrpc call:{[{jsonrpc,<<"2.0">>},
+                       {id,23},
+                       {method,<<"ServiceAPI.GetCurrentTopology">>},
+                       {params,[{[{rev,<<"NA==">>},{timeout,30000}]}]}]}

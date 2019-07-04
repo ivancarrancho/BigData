@@ -365,3 +365,26 @@ _time=2019-07-04T11:57:06.306+00:00 _level=ERROR _msg=Refreshing indexes failed 
 2019-07-04T11:58:12.159+00:00 [Info] num concurrent scans {0}
 2019-07-04T11:58:12.159+00:00 [Info] average scan response {0 ms}
 2019-07-04T11:58:13.064+00:00 [Info] [Queryport-connpool:127.0.0.1:9101] active conns 0, free conns 1
+2019-07-04T11:59:06.178+00:00 [WARN] Finalizing a bucket with active connections. 
+2019-07-04T11:59:06.178+00:00 [WARN] Finalizing a bucket with active connections. 
+2019-07-04T11:59:06.178+00:00 [WARN] Finalizing a bucket with active connections. 
+2019-07-04T11:59:12.053+00:00 [Info] connected with 1 indexers
+2019-07-04T11:59:12.053+00:00 [Info] index 8479338376212444691 has replicas [11114069127010685716]: 
+2019-07-04T11:59:12.053+00:00 [Info] index 8479338376212444691 has equivalents [8479338376212444691]: 
+2019-07-04T11:59:12.053+00:00 [Info] client load stats {"11114069127010685716": 0}
+2019-07-04T11:59:12.053+00:00 [Info] client hit stats {"11114069127010685716": 0}
+2019-07-04T11:59:12.053+00:00 [Info] client pending item stats {"11114069127010685716": 9223372036854775807}
+2019-07-04T11:59:12.053+00:00 [Info] client stats current {"11114069127010685716": true}
+2019-07-04T11:59:12.089+00:00 [Info] num concurrent scans {0}
+2019-07-04T11:59:12.089+00:00 [Info] average scan response {0 ms}
+2019-07-04T11:59:13.081+00:00 [Info] [Queryport-connpool:127.0.0.1:9101] active conns 0, free conns 1
+2019-07-04T12:00:11.985+00:00 [Info] connected with 1 indexers
+2019-07-04T12:00:11.985+00:00 [Info] index 8479338376212444691 has replicas [11114069127010685716]: 
+2019-07-04T12:00:11.985+00:00 [Info] index 8479338376212444691 has equivalents [8479338376212444691]: 
+2019-07-04T12:00:11.985+00:00 [Info] client load stats {"11114069127010685716": 0}
+2019-07-04T12:00:11.985+00:00 [Info] client hit stats {"11114069127010685716": 0}
+2019-07-04T12:00:11.985+00:00 [Info] client pending item stats {"11114069127010685716": 9223372036854775807}
+2019-07-04T12:00:11.985+00:00 [Info] client stats current {"11114069127010685716": true}
+2019-07-04T12:00:12.021+00:00 [Info] num concurrent scans {0}
+2019-07-04T12:00:12.021+00:00 [Info] average scan response {0 ms}
+2019-07-04T12:00:13.074+00:00 [Info] [Queryport-connpool:127.0.0.1:9101] active conns 0, free conns 1

@@ -2421,3 +2421,9 @@ vbucket_map_history ->
 [ns_server:debug,2019-07-04T11:57:03.767Z,couchdb_ns_1@127.0.0.1:<0.541.0>:capi_set_view_manager:wait_for_bucket_to_start:190]Engine for bucket "app" is created in memcached
 [ns_server:info,2019-07-04T11:57:29.109Z,couchdb_ns_1@127.0.0.1:<0.618.0>:ns_couchdb_api:handle_rpc:259]Cleaning up indexes for bucket `app`
 [ns_server:info,2019-07-04T11:57:59.120Z,couchdb_ns_1@127.0.0.1:<0.728.0>:ns_couchdb_api:handle_rpc:259]Cleaning up indexes for bucket `app`
+[ns_server:info,2019-07-04T11:58:29.128Z,couchdb_ns_1@127.0.0.1:<0.838.0>:ns_couchdb_api:handle_rpc:259]Cleaning up indexes for bucket `app`
+[ns_server:info,2019-07-04T11:58:59.139Z,couchdb_ns_1@127.0.0.1:<0.948.0>:ns_couchdb_api:handle_rpc:259]Cleaning up indexes for bucket `app`
+[ns_server:info,2019-07-04T11:59:29.148Z,couchdb_ns_1@127.0.0.1:<0.1060.0>:ns_couchdb_api:handle_rpc:259]Cleaning up indexes for bucket `app`
+[ns_server:info,2019-07-04T11:59:59.165Z,couchdb_ns_1@127.0.0.1:<0.1170.0>:ns_couchdb_api:handle_rpc:259]Cleaning up indexes for bucket `app`
+[ns_server:info,2019-07-04T12:00:29.175Z,couchdb_ns_1@127.0.0.1:<0.1280.0>:ns_couchdb_api:handle_rpc:259]Cleaning up indexes for bucket `app`
+[ns_server:info,2019-07-04T12:00:59.182Z,couchdb_ns_1@127.0.0.1:<0.1390.0>:ns_couchdb_api:handle_rpc:259]Cleaning up indexes for bucket `app`

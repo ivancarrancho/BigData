@@ -1232,3 +1232,9 @@ memcached<0.79.0>: 2019-07-04T11:57:09.617239+00:00 WARNING (app) Slow runtime f
 
 [ns_server:info,2019-07-04T11:57:45.119Z,babysitter_of_ns_1@127.0.0.1:<0.79.0>:ns_port_server:log:223]memcached<0.79.0>: 2019-07-04T11:57:44.915515+00:00 WARNING (app) Slow runtime for 'Adjusting hash table sizes.' on thread nonIO_worker_2: 82 ms
 
+[ns_server:info,2019-07-04T11:58:54.060Z,babysitter_of_ns_1@127.0.0.1:<0.79.0>:ns_port_server:log:223]memcached<0.79.0>: 2019-07-04T11:58:53.659959+00:00 WARNING (app) Slow runtime for 'Checkpoint Remover on vb 393' on thread nonIO_worker_1: 102 ms
+
+[ns_server:info,2019-07-04T11:59:25.177Z,babysitter_of_ns_1@127.0.0.1:<0.79.0>:ns_port_server:log:223]memcached<0.79.0>: 2019-07-04T11:59:24.887455+00:00 WARNING (app) Slow runtime for 'Adjusting hash table sizes.' on thread nonIO_worker_0: 15 ms
+
+[ns_server:info,2019-07-04T11:59:43.280Z,babysitter_of_ns_1@127.0.0.1:<0.79.0>:ns_port_server:log:223]memcached<0.79.0>: 2019-07-04T11:59:42.926058+00:00 WARNING (app) Slow runtime for 'Adjusting hash table sizes.' on thread nonIO_worker_2: 17 ms
+

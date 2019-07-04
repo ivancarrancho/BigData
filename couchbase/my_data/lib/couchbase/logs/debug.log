@@ -21292,3 +21292,85 @@ auto_failover_cfg ->
 [ns_server:debug,2019-07-04T11:58:03.661Z,ns_1@127.0.0.1:<0.6740.0>:compaction_new_daemon:bucket_needs_compaction:971]`app` data size is 241702, disk size is 8435712
 [ns_server:debug,2019-07-04T11:58:03.662Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
 [ns_server:debug,2019-07-04T11:58:03.662Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_kv too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T11:58:29.128Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_views) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T11:58:29.133Z,ns_1@127.0.0.1:<0.7974.0>:compaction_new_daemon:spawn_scheduled_views_compactor:497]Start compaction of indexes for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T11:58:29.137Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T11:58:29.137Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_views too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T11:58:33.663Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_kv) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T11:58:33.664Z,ns_1@127.0.0.1:<0.8183.0>:compaction_new_daemon:spawn_scheduled_kv_compactor:471]Start compaction of vbuckets for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T11:58:33.666Z,ns_1@127.0.0.1:<0.8185.0>:compaction_new_daemon:bucket_needs_compaction:971]`app` data size is 241702, disk size is 8435712
+[ns_server:debug,2019-07-04T11:58:33.666Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T11:58:33.666Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_kv too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T11:58:59.138Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_views) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T11:58:59.145Z,ns_1@127.0.0.1:<0.9424.0>:compaction_new_daemon:spawn_scheduled_views_compactor:497]Start compaction of indexes for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T11:58:59.147Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T11:58:59.147Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_views too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T11:59:03.666Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_kv) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T11:59:03.667Z,ns_1@127.0.0.1:<0.9624.0>:compaction_new_daemon:spawn_scheduled_kv_compactor:471]Start compaction of vbuckets for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T11:59:03.669Z,ns_1@127.0.0.1:<0.9626.0>:compaction_new_daemon:bucket_needs_compaction:971]`app` data size is 241702, disk size is 8435712
+[ns_server:debug,2019-07-04T11:59:03.669Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T11:59:03.669Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_kv too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T11:59:29.147Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_views) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T11:59:29.160Z,ns_1@127.0.0.1:<0.10867.0>:compaction_new_daemon:spawn_scheduled_views_compactor:497]Start compaction of indexes for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T11:59:29.162Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T11:59:29.162Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_views too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T11:59:33.670Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_kv) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T11:59:33.670Z,ns_1@127.0.0.1:<0.11070.0>:compaction_new_daemon:spawn_scheduled_kv_compactor:471]Start compaction of vbuckets for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T11:59:33.672Z,ns_1@127.0.0.1:<0.11072.0>:compaction_new_daemon:bucket_needs_compaction:971]`app` data size is 241702, disk size is 8435712
+[ns_server:debug,2019-07-04T11:59:33.672Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T11:59:33.672Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_kv too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T11:59:59.164Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_views) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T11:59:59.171Z,ns_1@127.0.0.1:<0.12318.0>:compaction_new_daemon:spawn_scheduled_views_compactor:497]Start compaction of indexes for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T11:59:59.172Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T11:59:59.172Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_views too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T12:00:03.673Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_kv) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T12:00:03.673Z,ns_1@127.0.0.1:<0.12514.0>:compaction_new_daemon:spawn_scheduled_kv_compactor:471]Start compaction of vbuckets for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T12:00:03.676Z,ns_1@127.0.0.1:<0.12516.0>:compaction_new_daemon:bucket_needs_compaction:971]`app` data size is 241702, disk size is 8435712
+[ns_server:debug,2019-07-04T12:00:03.676Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T12:00:03.676Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_kv too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T12:00:29.174Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_views) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T12:00:29.179Z,ns_1@127.0.0.1:<0.13754.0>:compaction_new_daemon:spawn_scheduled_views_compactor:497]Start compaction of indexes for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T12:00:29.179Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T12:00:29.179Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_views too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T12:00:33.678Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_kv) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T12:00:33.678Z,ns_1@127.0.0.1:<0.13946.0>:compaction_new_daemon:spawn_scheduled_kv_compactor:471]Start compaction of vbuckets for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T12:00:33.680Z,ns_1@127.0.0.1:<0.13948.0>:compaction_new_daemon:bucket_needs_compaction:971]`app` data size is 241702, disk size is 8435712
+[ns_server:debug,2019-07-04T12:00:33.681Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T12:00:33.681Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_kv too soon. Next run will be in 30s
+[ns_server:debug,2019-07-04T12:00:59.180Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_scheduler_message:1311]Starting compaction (compact_views) for the following buckets: 
+[<<"app">>]
+[ns_server:info,2019-07-04T12:00:59.187Z,ns_1@127.0.0.1:<0.15200.0>:compaction_new_daemon:spawn_scheduled_views_compactor:497]Start compaction of indexes for bucket app with config: 
+[{database_fragmentation_threshold,{30,undefined}},
+ {view_fragmentation_threshold,{30,undefined}}]
+[ns_server:debug,2019-07-04T12:00:59.188Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_new_daemon:process_compactors_exit:1352]Finished compaction iteration.
+[ns_server:debug,2019-07-04T12:00:59.188Z,ns_1@127.0.0.1:compaction_new_daemon<0.446.0>:compaction_scheduler:schedule_next:60]Finished compaction for compact_views too soon. Next run will be in 30s
