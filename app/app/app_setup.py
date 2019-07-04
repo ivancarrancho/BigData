@@ -12,4 +12,4 @@ def init_app(app):
     # init_jwt(app)
     # register_blueprints(app)
     # register_docs(docs)
-    config['SECRET_KEY'] = SECRET_KEY
+    app.config['SECRET_KEY'] = SECRET_KEY

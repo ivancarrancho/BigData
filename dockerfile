@@ -16,6 +16,6 @@ COPY ./app /app/
 
 EXPOSE 8888
 
-ENV FLASK_APP=app/main.py
+ENV FLASK_APP=/app/project.py
 ENV FLASK_DEBUG=1
 CMD flask run --host=0.0.0.0 --port=8888
