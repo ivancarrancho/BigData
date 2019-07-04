@@ -1,0 +1,4 @@
+version: '3.3'
+services:
+  couchbase:
+    image: couchbase:community-6.0.0

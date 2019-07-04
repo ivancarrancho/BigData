@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+  couchbase:
+    ports:
+      - '8091-8096:8091-8096'
+      - '11210-11211:11210-11211'
+  backend:
+    ports:
+      - '8888:8888'

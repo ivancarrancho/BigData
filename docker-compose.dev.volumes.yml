@@ -1,0 +1,5 @@
+version: '3.3'
+services:
+  couchbase:
+    volumes:
+      - ./couchbase/my_data:/opt/couchbase/var

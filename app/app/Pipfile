@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autoflake = "*"
+black = "*"
+flake8 = "*"
+isort = "*"
+mypy = "*"
+pytest = "==4.5.0"
+coverage= "==4.5.3"
+
+[packages]
+apispec = "==0.39.0"
+couchbase = "*"
+flask = "==1.0.2"
+flask-apispec = "==0.7.0"
+flask-cors = "==3.0.7"
+ipython = "==7.4.0"
+marshmallow = "==2.19.2"
+python-dateutil = "==2.8.0"
+
+[requires]
+python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true

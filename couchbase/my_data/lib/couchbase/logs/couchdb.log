@@ -1,0 +1,14 @@
+[couchdb:info,2019-07-04T11:52:32.509Z,couchdb_ns_1@127.0.0.1:cb_couch_sup<0.98.0>:couch_log:info:41]Apache CouchDB has started on http://0.0.0.0:8092/
+[couchdb:info,2019-07-04T11:53:25.986Z,couchdb_ns_1@127.0.0.1:<0.288.0>:couch_log:info:41]Deleting couch file "/opt/couchbase/var/lib/couchbase/data/app/master.couch.1.compact" with renaming it to "/opt/couchbase/var/lib/couchbase/data/.delete/0ec2104be3e7ef2cf042b0cc3bae59e9"
+[couchdb:info,2019-07-04T11:53:26.018Z,couchdb_ns_1@127.0.0.1:<0.288.0>:couch_log:info:41]Deleting couch file "/opt/couchbase/var/lib/couchbase/data/app/master.couch.1.compact" with renaming it to "/opt/couchbase/var/lib/couchbase/data/.delete/ee8510895f23b9123f4baef4082e9906"
+[couchdb:info,2019-07-04T11:53:26.165Z,couchdb_ns_1@127.0.0.1:couch_view<0.174.0>:couch_log:info:41]Deleting couch file "/opt/couchbase/var/lib/couchbase/data/.app/master_temp" with renaming it to "/opt/couchbase/var/lib/couchbase/data/.delete/adbde8cddcff365882fd1a393e146f78"
+[couchdb:info,2019-07-04T11:53:26.187Z,couchdb_ns_1@127.0.0.1:couch_view<0.174.0>:couch_log:info:41]Deleting couch file "/opt/couchbase/var/lib/couchbase/data/.app/master_temp" with renaming it to "/opt/couchbase/var/lib/couchbase/data/.delete/18d549ef9def968527abdc541ec6986a"
+[couchdb:info,2019-07-04T11:53:31.687Z,couchdb_ns_1@127.0.0.1:couch_query_logger<0.148.0>:couch_log:info:41]Query-Volume
+---
+[couchdb:info,2019-07-04T11:54:31.681Z,couchdb_ns_1@127.0.0.1:couch_query_logger<0.148.0>:couch_log:info:41]Query-Volume
+---
+[couchdb:info,2019-07-04T11:55:57.743Z,couchdb_ns_1@127.0.0.1:cb_couch_sup<0.98.0>:couch_log:info:41]Apache CouchDB has started on http://0.0.0.0:8092/
+[couchdb:info,2019-07-04T11:56:56.998Z,couchdb_ns_1@127.0.0.1:couch_query_logger<0.148.0>:couch_log:info:41]Query-Volume
+---
+[couchdb:info,2019-07-04T11:57:57.000Z,couchdb_ns_1@127.0.0.1:couch_query_logger<0.148.0>:couch_log:info:41]Query-Volume
+---
