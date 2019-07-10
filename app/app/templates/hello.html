@@ -12,9 +12,11 @@
         <link rel="stylesheet" href="https://bulma.io/css/bulma-docs.css?v=201803071912">
         <link rel="canonical" href="https://bulma.io/2017/07/24/access-previous-bulma-versions/">
         <link rel="alternate" type="application/rss+xml" title="Bulma: a modern CSS framework based on Flexbox" href="https://bulma.io/atom.xml">
+        <!-- Api GeoChart Google -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
-
     <body>
+
     <header class="hero is-ligth">
       <div class="hero-head">
         <nav class="nav has-shadow">
@@ -156,9 +158,12 @@
           </div>
         </div>
       </div>
-      
-   <div id="container"></div>
-      <!-- Import JS Map Colombia -->
+      <!-- Api GeoChart Google , Show Map Colombia-->
+      <div align="center">
+        <div id="geochart-colors"  style="width: 1024px; height: 800px;"></div>
+      </div>
+    
+
       <div class="columns is-multiline">
         <div class="column is-6">
           <div class="panel">
@@ -167,24 +172,10 @@
             </p>
             <div class="panel-block">
               <figure class="image is-16x9">
-               
+               <img src="https://placehold.it/1280x720">
 
-            <style type="text/css">
-              #container {
-                height: 1024px; 
-                min-width: 1024px; 
-                max-width: 1024px; 
-                margin: 0 auto; 
-            }
-            .loading {
-                margin-top: 10em;
-                text-align: center;
-                color: gray;
-            }
-            </style>
-            <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-            <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-            <script src="https://code.highcharts.com/mapdata/countries/co/co-all.js"></script>
+           
+          
               </figure>
             </div>
           </div>
@@ -230,81 +221,65 @@
   </div>
 </div>
 </body>
+
 <script type="text/javascript">
-  var data = [
-    ['co-ca', 1],
-    ['co-na', 2],
-    ['co-ch', 3],
-    ['co-3653', 4],
-    ['co-to', 5],
-    ['co-cq', 6],
-    ['co-hu', 7],
-    ['co-pu', 8],
-    ['co-am', 9],
-    ['co-bl', 10],
-    ['co-vc', 11],
-    ['co-su', 12],
-    ['co-at', 13],
-    ['co-ce', 14],
-    ['co-lg', 15],
-    ['co-ma', 16],
-    ['co-ar', 17],
-    ['co-ns', 18],
-    ['co-cs', 19],
-    ['co-gv', 20],
-    ['co-me', 21],
-    ['co-vp', 22],
-    ['co-vd', 23],
-    ['co-an', 24],
-    ['co-co', 25],
-    ['co-by', 26],
-    ['co-st', 27],
-    ['co-cl', 28],
-    ['co-cu', 29],
-    ['co-1136', 30],
-    ['co-ri', 31],
-    ['co-qd', 32],
-    ['co-gn', 33]
-];
-
-// Create the chart
-Highcharts.mapChart('container', {
-    chart: {
-        map: 'countries/co/co-all'
-    },
-
-    title: {
-        text: 'Fuerza de Ventas'
-    },
-
-    subtitle: {
-        text: 'UPL Colombia '
-    },
-
-    mapNavigation: {
-        enabled: true,
-        buttonOptions: {
-            verticalAlign: 'bottom'
-        }
-    },
-
-    colorAxis: {
-        min: 0
-    },
-
-    series: [{
-        data: data,
-        name: 'Random data',
-        states: {
-            hover: {
-                color: '#BADA55'
-            }
-        },
-        dataLabels: {
-            enabled: true,
-            format: '{point.name}'
-        }
-    }]
+  google.charts.load('current', {
+  'packages': ['geochart'],
+  // Note: you will need to get a mapsApiKey for your project.
+  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+  'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
 });
+google.charts.setOnLoadCallback(drawRegionsMap);
+
+function drawRegionsMap() {
+  var data = google.visualization.arrayToDataTable([
+    ['Departamento', 'Número de SE', '%'],
+    ['Amazonas', 0, 0],
+    ['Antioquia', 3775, 22],
+    ['Arauca', 15, 0],
+    ['Atlántico', 761, 4],
+    ['Bogotá', 3792, 22],
+    ['Bolívar', 476, 3],
+    ['Boyacá', 183, 1],
+    ['Caldas', 439, 3],
+    ['Caquetá', 48, 0],
+    ['Casanare', 39, 0],
+    ['Cauca', 206, 1],
+    ['Cesar', 218, 1],
+    ['Chocó', 7, 0],
+    ['Córdoba', 111, 1],
+    ['Cundinamarca', 752, 4],
+    ['Guainía', 0, 0],
+    ['Guaviare', 0, 0],
+    ['Huila', 154, 1],
+    ['La Guajira', 113, 1],
+    ['Magdalena', 175, 1],
+    ['Meta', 201, 1],
+    ['Norte De Santander', 229, 0],
+    ['Nariño', 96, 1],
+    ['Putumayo', 5, 0],
+    ['Quindío', 147, 1],
+    ['Risaralda', 649, 4],
+    ['Santander', 740, 4],
+    ['Sucre', 24, 0],
+    ['Tolima', 247, 1],
+    ['Valle Del Cauca', 2586, 15],
+    ['Vaupés', 0, 0],
+    ['Vichada', 0, 0]
+  ]);
+
+  var options = {
+    backgroundColor: '#81d4fa',
+    datalessRegionColor: '##6E6E6E',
+    defaultColor: '#f5f5f5',
+    colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
+    resolution: 'provinces',
+    region: 'CO'
+  };
+
+  var chart = new google.visualization.GeoChart(document.getElementById('geochart-colors'));
+
+  chart.draw(data, options);
+}
 </script>
 </html>
