@@ -78,6 +78,7 @@
             </div>
           </div>
         </div>
+
         <div class="column">
           <div class="box">
             <div class="heading">Revenue / Expenses</div>
@@ -158,7 +159,7 @@
         </div>
       </div>
       
-
+   <div id="container"></div>
       <!-- Import JS Map Colombia -->
       <div class="columns is-multiline">
         <div class="column is-6">
@@ -172,9 +173,9 @@
 
             <style type="text/css">
               #container {
-                height: 500px; 
-                min-width: 310px; 
-                max-width: 800px; 
+                height: 1024px; 
+                min-width: 1024px; 
+                max-width: 1024px; 
                 margin: 0 auto; 
             }
             .loading {
@@ -188,7 +189,7 @@
             <script src="https://code.highcharts.com/mapdata/countries/co/co-all.js"></script>
 
 
-            <div id="container"></div>
+         
 
 
 
@@ -248,7 +249,6 @@
 </body>
 <script type="text/javascript">
   var data = [
-    ['co-sa', 0],
     ['co-ca', 1],
     ['co-na', 2],
     ['co-ch', 3],
@@ -291,11 +291,11 @@ Highcharts.mapChart('container', {
     },
 
     title: {
-        text: 'Highmaps basic demo'
+        text: 'Fuerza de Ventas'
     },
 
     subtitle: {
-        text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/co/co-all.js">Colombia</a>'
+        text: 'UPL Colombia '
     },
 
     mapNavigation: {
