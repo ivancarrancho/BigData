@@ -7,6 +7,11 @@ import utilities as ut
 import json 
 
 
+@app.route("/")
+def hello():
+    return render_template('hello.html')
+
+
 @app.route("/create/", methods=['POST'])
 def create():
 
