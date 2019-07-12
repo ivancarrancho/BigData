@@ -12,44 +12,42 @@
         <link rel="stylesheet" href="https://bulma.io/css/bulma-docs.css?v=201803071912">
         <link rel="canonical" href="https://bulma.io/2017/07/24/access-previous-bulma-versions/">
         <link rel="alternate" type="application/rss+xml" title="Bulma: a modern CSS framework based on Flexbox" href="https://bulma.io/atom.xml">
+        <!-- Api GeoChart Google -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body>
+
     <header class="hero is-ligth">
       <div class="hero-head">
         <nav class="nav has-shadow">
-      <div class="nav-left">
-        <a class="navbar-brand" href="/">
-          <video id="video" autoplay playsinline autobuffer muted loop>
-          <source src='https://www.upl-ltd.com/images/UPL_header-logo.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-          </video>
-        </a>
-      </div>
-   
-     
-    </nav>
-  </div>
-</header>
-
-<div class="section">
-  <div class="columns">
-   
-    
-    <main class="column">
-      <div class="level">
-        <div class="level-left">
-          <div class="level-item">
-            <div class="title">Dashboard</div>
-
+          <div class="nav-left">
+            <a class="navbar-brand" href="/">
+            <video id="video" autoplay playsinline autobuffer muted loop>
+            <source src='https://www.upl-ltd.com/images/UPL_header-logo.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            </video>
+            </a>
           </div>
-        </div>
-        <div class="level-right">
-          <div class="level-item">
-            <button type="button" class="button is-small">
+        </nav>
+      </div>
+    </header>
+
+    <div class="section">
+      <div class="columns">
+        <main class="column">
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <div class="title">Dashboard</div>
+              </div>
+            </div>
+          <div class="level-right">
+            <div class="level-item">
+              <button type="button" class="button is-small">
               March 8, 2017 - April 6, 2017
-            </button>
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
+         </div>
       
       <div class="columns">
         <div class="column">
@@ -78,6 +76,7 @@
             </div>
           </div>
         </div>
+
         <div class="column">
           <div class="box">
             <div class="heading">Revenue / Expenses</div>
@@ -104,6 +103,7 @@
             </div>
           </div>
         </div>
+
         <div class="column">
           <div class="box">
             <div class="heading">Feedback Activity</div>
@@ -130,6 +130,7 @@
             </div>
           </div>
         </div>
+
         <div class="column">
           <div class="box">
             <div class="heading">Orders / Returns</div>
@@ -157,7 +158,12 @@
           </div>
         </div>
       </div>
-      
+      <!-- Api GeoChart Google , Show Map Colombia-->
+      <div align="center">
+        <div id="geochart-colors"  style="width: 1024px; height: 800px;"></div>
+      </div>
+    
+
       <div class="columns is-multiline">
         <div class="column is-6">
           <div class="panel">
@@ -166,7 +172,10 @@
             </p>
             <div class="panel-block">
               <figure class="image is-16x9">
-                <img src="https://placehold.it/1280x720">
+               <img src="https://placehold.it/1280x720">
+              
+           
+          
               </figure>
             </div>
           </div>
@@ -211,5 +220,66 @@
     </main>
   </div>
 </div>
-    </body>
+</body>
+
+<script type="text/javascript">
+  google.charts.load('current', {
+  'packages': ['geochart'],
+  // Note: you will need to get a mapsApiKey for your project.
+  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+  'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+});
+google.charts.setOnLoadCallback(drawRegionsMap);
+
+function drawRegionsMap() {
+  var data = google.visualization.arrayToDataTable([
+    ['Departamento', 'Número de SE', '%'],
+    ['Amazonas', 0, 0],
+    ['Antioquia', 3775, 22],
+    ['Arauca', 15, 0],
+    ['Atlántico', 65, 4],
+    ['Bogotá', 3792, 22],
+    ['Bolívar', 476, 3],
+    ['Boyacá', 183, 1],
+    ['Caldas', 439, 3],
+    ['Caquetá', 48, 0],
+    ['Casanare', 39, 0],
+    ['Cauca', 206, 1],
+    ['Cesar', 218, 1],
+    ['Chocó', 7, 0],
+    ['Córdoba', 111, 1],
+    ['Cundinamarca', 752, 4],
+    ['Guainía', 0, 0],
+    ['Guaviare', 0, 0],
+    ['Huila', 154, 1],
+    ['La Guajira', 113, 1],
+    ['Magdalena', 175, 1],
+    ['Meta', 201, 1],
+    ['Norte De Santander', 229, 0],
+    ['Nariño', 96, 1],
+    ['Putumayo', 5, 0],
+    ['Quindío', 147, 1],
+    ['Risaralda', 649, 4],
+    ['Santander', 740, 4],
+    ['Sucre', 24, 0],
+    ['Tolima', 247, 1],
+    ['Valle Del Cauca', 2586, 15],
+    ['Vaupés', 0, 0],
+    ['Vichada', 0, 0]
+  ]);
+
+  var options = {
+    backgroundColor: '#E6ECEF',
+    datalessRegionColor: '#6E6E6E',
+    defaultColor: '#f5f5f5',
+    colorAxis: {colors: ['#8AF259', 'black', '#FB0032']},
+    resolution: 'provinces',
+    region: 'CO'
+  };
+
+  var chart = new google.visualization.GeoChart(document.getElementById('geochart-colors'));
+
+  chart.draw(data, options);
+}
+</script>
 </html>
