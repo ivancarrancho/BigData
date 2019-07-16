@@ -5,6 +5,7 @@ from flask import request
 from db import database
 import utilities as ut
 import json 
+import pandas as pd
 
 
 @app.route("/")
@@ -52,3 +53,8 @@ def delete():
     abort(400, 'format error')
 
 
+def loadFile():
+    # print('hola')
+    dfs = pd.read_excel('./data2.xlsx', sheet_name=None)
+    print(dfs)
+    print(dfs.head())
