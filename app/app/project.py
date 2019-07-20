@@ -53,8 +53,8 @@ def edit():
     if request.json:
         conect = database.get_default_bucket()
         if 'id' in request.json and request.json['id']:
-            conect.upsert(request.json['id'],request.json)
-            return json.dumps({ 'Ok' : True })
+            conect.upsert(request.json['id'], request.json)
+            return json.dumps({'Ok': True})
         else:
             abort(400, 'key no defined')
 
@@ -74,35 +74,3 @@ def delete():
             abort(400, 'key no defined')
 
     abort(400, 'format error')
-
-
-def loadFile():
-    conect = database.get_default_bucket()
-    # print('hola')
-    headers = [
-        'V-P',
-        'Año',
-        'Mes',
-        'Numero_mes',
-        'Doc',
-        'Tipo_doc',
-        'Zona',
-        'Sub-Zona',
-        'Nit',
-        'Cliente',
-        'Producto-Familia',
-        'Pres',
-        'Referencia',
-        'Segmento',
-        'Unds',
-        'kg-ltrs',
-        'venta_neta',
-    ]
-    dfs = pd.read_excel('./data2.xlsx')
-
-    for data in dfs.as_matrix():
-        document = {}
-        for position, header in enumerate(headers):
-            document.update({header: str(data[position]), 'type': 'product'})
-
-        conect.upsert(ut.generate_id(), document)

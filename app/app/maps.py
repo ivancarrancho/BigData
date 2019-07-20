@@ -2,6 +2,9 @@ import pandas as pd
 import folium
 import os
 import matplotlib.pyplot as plt
+from db import database
+import utilities as ut
+import math
 
 # Load the shape of the zone (US states)
 # Find the original file here: https://github.com/python-visualization/folium/tree/master/examples/data
@@ -79,15 +82,14 @@ def paint_cake():
 #     plt.savefig('static/cake.png')
 
 
-
-def loadFile():
+def loadFileProducts():
+    print('**********leyendo')
     conect = database.get_default_bucket()
-    # print('hola')
+
     headers = [
         'V-P',
-        'Año',
+        'Ano',
         'Mes',
-        'Numero_mes',
         'Doc',
         'Tipo_doc',
         'Zona',
@@ -102,11 +104,94 @@ def loadFile():
         'kg-ltrs',
         'venta_neta',
     ]
-    dfs = pd.read_excel('./data2.xlsx')
+    dfs = pd.read_excel('./data.xlsx')
+    print('**********termino de leer')
 
     for data in dfs.as_matrix():
         document = {}
         for position, header in enumerate(headers):
-            document.update({header: str(data[position]), 'type': 'product'})
+
+            document.update({header: data[position], 'type': 'product'})
 
         conect.upsert(ut.generate_id(), document)
+
+
+def loadFileWeather():
+    print('**********leyendo')
+    connect = database.get_default_bucket()
+
+    # print('hola')
+    city_list = [
+        'Antioquia',
+        'Boyaca',
+        'Caldas',
+        'Casanare',
+        'Cordoba',
+        'Cundinamarca',
+        'Huila',
+        'Meta',
+        'Nariño',
+        'Norte De Santander',
+        'Quindio',
+        'Risaralda',
+        'Santander',
+        'Tolima',
+        'Valle',
+    ]
+
+    def isNaN(num):
+        return num != num
+
+    for cities in city_list:
+        headers = [
+            'Hora',
+            'T',
+            'Po',
+            'P',
+            'Pa',
+            'U',
+            'DD',
+            'Ff',
+            'ff10',
+            'ff3',
+            'N',
+            'WW',
+            'W1',
+            'W2',
+            'Tn',
+            'Tx',
+            'Cl',
+            'Nh',
+            'H',
+            'Cm',
+            'Ch',
+            'VV',
+            'Td',
+            'RRR',
+            'tR',
+            'E',
+            'Tg',
+            "E'",
+            'sss'
+        ]
+        dfs = pd.read_excel(f'./city_files/{cities}.xls')
+        print('**********termino de leer cities ', cities)
+
+        for data in dfs.as_matrix():
+            document = {}
+            for position, header in enumerate(headers):
+                document.update({
+                    header: '' if isNaN(data[position]) else data[position],
+                    'type': 'weather'
+                })
+
+            document.update({'Zona': cities})
+
+            hour = data[0].split('.')
+            document.update({
+                'Dia': int(hour[0]),
+                'mes': int(hour[1]),
+                'ano': int(hour[2][:4])
+            })
+
+            connect.upsert(ut.generate_id(), document)
