@@ -6,11 +6,35 @@ from db import database
 import utilities as ut
 import json
 import pandas as pd
+from maps import paint_map
+from maps import paint_cake
 
 
 @app.route("/")
 def hello():
+    paint_map()
+    paint_cake()
+
     return render_template('hello.html')
+
+
+@app.route("/map/")
+def map_col():
+    return render_template(
+        'map.html',
+        iframe_map=f'{request.url_root}iframe_map.html/'
+        # cake_png=f'{request.url_root}templates/cake.png'
+    )
+
+
+@app.route('/iframe_map.html/')
+def render_map():
+    return render_template('iframe_map.html')
+
+
+# @app.route('/cake.png/')
+# def cake():
+#     return render_template('cake.png')
 
 
 @app.route("/create/", methods=['POST'])
@@ -82,52 +106,3 @@ def loadFile():
             document.update({header: str(data[position]), 'type': 'product'})
 
         conect.upsert(ut.generate_id(), document)
-
-
-# Media
-def average(data_list):
-    return round(float(sum(data_list) / len(data_list)), 2)
-
-
-# Mediana
-def mediana(data_list):
-    data_list.sort()
-
-    if len(data_list) % 2 == 0:
-        n = len(data_list)
-        return (data_list[n / 2 - 1] + data_list[n / 2]) / 2
-    else:
-        return data_list[len(data_list) / 2]
-
-
-# DesStd
-def DesStd(data_list):
-    n = len(data_list)
-
-    promedio = average(data_list)
-    cuadrados = []
-    for dato in data_list:
-        r = (dato - promedio) ** 2
-        cuadrados.append(r)
-
-    return (sum(cuadrados) / (n - 1)) ** 0.5
-
-
-# Varianza
-def varianza(data_list):
-    suma = 0
-    m = average(data_list)
-    for elemento in data_list:
-        suma += (elemento - m) ** 2
-
-    return suma / float(len(data_list))
-
-
-# Max
-def max_data(data_list):
-    return max(data_list)
-
-
-# Min
-def min_data(data_list):
-    return min(data_list)
