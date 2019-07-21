@@ -10,25 +10,84 @@ import math
 # Find the original file here: https://github.com/python-visualization/folium/tree/master/examples/data
 # You have to download this file and set the directory where you saved it
 
+from couchbase.n1ql import CONSISTENCY_REQUEST
+from couchbase.n1ql import N1QLQuery
 
-def paint_map():
+city_list = {
+    'AMAZONAS': 'AMAZONAS',
+    'Antioquia': 'ANTIOQUIA',
+    'ARAUCA': 'ARAUCA',
+    'ARCHIPIELAGO DE SAN ANDRES PROVIDENCIA Y SANTA CATALINA': 'ARCHIPIELAGO DE SAN ANDRES PROVIDENCIA Y SANTA CATALINA',
+    'ATLANTICO': 'ATLANTICO',
+    'BOLIVAR': 'BOLIVAR',
+    'Boyaca': 'BOYACA',
+    'Caldas': 'CALDAS',
+    'CAQUETA': 'CAQUETA',
+    'Casanare': 'CASANARE',
+    'Cauca': 'CAUCA',
+    'CESAR': 'CESAR',
+    'CHOCO': 'CHOCO',
+    'Monteria': 'CORDOBA',
+    'Cundinamarca': 'CUNDINAMARCA',
+    'GUAINIA': 'GUAINIA',
+    'GUAVIARE': 'GUAVIARE',
+    'Huila': 'HUILA',
+    'LA GUAJIRA': 'LA GUAJIRA',
+    'MAGDALENA': 'MAGDALENA',
+    'Meta': 'META',
+    'Nariño': 'NARIÑO',
+    'Norte De Santander': 'NORTE DE SANTANDER',
+    'PUTUMAYO': 'PUTUMAYO',
+    'Quindio': 'QUINDIO',
+    'Risaralda': 'RISARALDA',
+    'SANTAFE DE BOGOTA D.C': 'SANTAFE DE BOGOTA D.C',
+    'Santander': 'SANTANDER',
+    'SUCRE': 'SUCRE',
+    'Tolima': 'TOLIMA',
+    'Valle': 'VALLE DEL CAUCA',
+    'VAUPES': 'VAUPES',
+    'VICHADA': 'VICHADA',
+}
+
+
+def paint_map(ano, mes, segmento):
+    connect = database.get_default_bucket()
+
+    query_str = 'SELECT Zona, Segmento, sum(venta_neta) as price_sum, sum(Unds) as units_sum FROM `app` WHERE type="product" AND Ano=$ano AND Mes=$mes AND Segmento=$segmento group by Zona, Segmento'
+    q = N1QLQuery(
+        query_str,
+        bucket='app',
+        ano=int(ano),
+        mes=int(mes),
+        segmento=segmento
+    )
+
+    q.consistency = CONSISTENCY_REQUEST
+    response_list = []
+    print(q)
+    for doc in connect.n1ql_query(q):
+        response_list.append(doc)
+
+    data_map = []
+    for data in response_list:
+        data_map.append([city_list.get(data['Zona']), data['price_sum']])
 
     state_unemployment = 'city_files/us_example.csv'
     state_data = pd.read_csv(state_unemployment)
-
+    print(state_data)
     m = folium.Map(location=[4.6482837, -74.2478938], zoom_start=6)
 
     # Add the color for the chloropleth:
     m.choropleth(
         geo_data='city_files/co-all.json',
         name='choropleth',
-        data=state_data,
-        columns=['State', 'Unemployment'],
+        data=data_map,
+        columns=['State', 'segmento'],
         key_on='feature.properties.id',
         fill_color='YlGn',
         fill_opacity=0.7,
         line_opacity=0.2,
-        legend_name='Unemployment Rate (%)'
+        legend_name=segmento
     )
     folium.LayerControl().add_to(m)
 

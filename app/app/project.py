@@ -12,19 +12,30 @@ from maps import paint_cake
 
 @app.route("/")
 def hello():
-    paint_map()
-    paint_cake()
 
     return render_template('hello.html')
 
 
-@app.route("/map/")
+@app.route("/map/", methods=['POST', 'GET'])
 def map_col():
-    return render_template(
-        'map.html',
-        iframe_map=f'{request.url_root}iframe_map.html/'
-        # cake_png=f'{request.url_root}templates/cake.png'
-    )
+    map_exist = False
+    url_root = request.url_root
+    print(request.form)
+    if request.form:
+        if (
+            'Ano' in request.form and request.form['Ano'],
+            'Mes' in request.form and request.form['Mes'],
+            'Segmento' in request.form and request.form['Segmento']
+        ):
+            paint_map(
+                ano=request.form['Ano'],
+                mes=request.form['Mes'],
+                segmento=request.form['Segmento']
+            )
+            paint_cake()
+            map_exist = f'{url_root}iframe_map.html/'
+
+    return render_template('map.html', url_root=url_root, map_exist=map_exist)
 
 
 @app.route('/iframe_map.html/')
