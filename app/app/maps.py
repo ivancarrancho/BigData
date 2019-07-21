@@ -190,8 +190,8 @@ def loadFileWeather():
             hour = data[0].split('.')
             document.update({
                 'Dia': int(hour[0]),
-                'mes': int(hour[1]),
-                'ano': int(hour[2][:4])
+                'Mes': int(hour[1]),
+                'Ano': int(hour[2][:4])
             })
 
             connect.upsert(ut.generate_id(), document)
