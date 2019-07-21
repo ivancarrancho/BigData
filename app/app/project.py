@@ -8,6 +8,7 @@ import json
 import pandas as pd
 from maps import paint_map
 from maps import paint_cake
+from maps import paint_g
 
 
 @app.route("/")
@@ -36,6 +37,26 @@ def map_col():
             map_exist = f'{url_root}iframe_map.html/'
 
     return render_template('map.html', url_root=url_root, map_exist=map_exist)
+
+
+@app.route("/map2/", methods=['POST', 'GET'])
+def map_col2():
+    
+    map_exist = False
+    url_root = request.url_root
+    print(request.form)
+    image = ' '
+    if request.form:
+        if (
+            'Ano' in request.form and request.form['Ano'],
+            'Segmento' in request.form and request.form['Segmento']
+        ):
+            image = paint_g(
+                ano=request.form['Ano'],
+                segmento=request.form['Segmento']
+            )
+
+    return render_template('map2.html', url_root=url_root, map_exist=image)
 
 
 @app.route('/iframe_map.html/')

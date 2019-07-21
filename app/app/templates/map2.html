@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+    <header class="hero is-ligth">
+        <!-- <h1>Iframe {{ simple_var }}</h1> -->
+    </header>
+    <h3 align="center"><a href="/">Stumble</a></h3>
+    <form action="{{ url_root }}map2/" method="POST" id="map-form">
+        <select name="Segmento" form="map-form">
+            <option value="Fungicidas" name="Segmento">Fungicidas</option>
+            <option value="Insecticidas" name="Segmento">Insecticidas</option>
+            <option value="Herbicidas" name="Segmento">Herbicidas</option>
+            <option value="Coadyuvantes" name="Segmento">Coadyuvantes</option>
+            <option value="Otros" name="Segmento">Otros</option>
+            <option value="Biosoluciones" name="Segmento">Biosoluciones</option>
+        </select>
+        <label>Año</label>
+        <select name="Ano" form="map-form">
+            <option value="2014" name="2014">2014</option>
+            <option value="2015" name="2015">2015</option>
+            <option value="2016" name="2016">2016</option>
+            <option value="2017" name="2017">2017</option>
+            <option value="2018" name="2018">2018</option>
+            <option value="2019" name="2019">2019</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if map_exist %}
+         <img src="data:image/png;base64,{{map_exist}}"/>
+    {% endif %}
+</html>

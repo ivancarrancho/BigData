@@ -5,13 +5,15 @@ import matplotlib.pyplot as plt
 from db import database
 import utilities as ut
 import math
-
+import numpy as np
 # Load the shape of the zone (US states)
 # Find the original file here: https://github.com/python-visualization/folium/tree/master/examples/data
 # You have to download this file and set the directory where you saved it
 
 from couchbase.n1ql import CONSISTENCY_REQUEST
 from couchbase.n1ql import N1QLQuery
+import base64
+from io import BytesIO
 
 city_list = {
     'AMAZONAS': 'AMAZONAS',
@@ -163,7 +165,7 @@ def loadFileProducts():
         'kg-ltrs',
         'venta_neta',
     ]
-    dfs = pd.read_excel('./data.xlsx')
+    dfs = pd.read_excel('./data2.xlsx')
     print('**********termino de leer')
 
     for data in dfs.as_matrix():
@@ -254,3 +256,68 @@ def loadFileWeather():
             })
 
             connect.upsert(ut.generate_id(), document)
+
+
+def paint_g(ano,segmento):
+
+    connect = database.get_default_bucket()
+
+    query_str = 'SELECT Mes, Segmento, sum(venta_neta) as price_sum, sum(Unds) as units_sum FROM `app` WHERE type="product" AND Ano=$ano  AND Segmento=$segmento group by Mes, Segmento ORDER BY Mes'
+    q = N1QLQuery(
+        query_str,
+        bucket='app',
+        ano=int(ano),
+        segmento=segmento
+    )
+
+    q.consistency = CONSISTENCY_REQUEST
+    response_list = []
+    print(q)
+
+    for doc in connect.n1ql_query(q):
+        response_list.append(doc)
+
+    print(response_list)
+    data_map = []
+    for data in response_list:
+        data_map.append(data['price_sum'])
+
+
+    query_str = 'SELECT Mes , AVG(U) as lluvia FROM `app` WHERE type="weather" AND Ano=$ano  GROUP BY Mes ORDER BY Mes'
+    q = N1QLQuery(
+        query_str,
+        bucket='app',
+        ano=int(ano)
+    )
+
+    q.consistency = CONSISTENCY_REQUEST
+    response_list2 = []
+
+    for doc in connect.n1ql_query(q):
+        response_list2.append(doc)
+
+    data_map2 = []
+    for data in response_list2:
+        print(data)
+        data_map2.append(data['lluvia'])
+
+    x = [ 'Ene', 'Feb' , 'Mar', 'Abr' , 'May' ,'Jun' , 'Jul' , 'Ago' , 'Sep' , 'Oct' ,'Nov','Dic']
+    y = data_map
+    z = data_map2
+    print(y)
+    print(z)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x,y, '-', label = 'Ventas')
+
+    ax2 = ax.twinx()
+    ax2.plot(x,z, '-r', label = 'Porcentaje de lluvia')
+    fig.legend(loc=1)
+
+    ax.set_xlabel("x [Meses]")
+    ax.set_ylabel(r"Cantidad de venta ")
+    ax2.set_ylabel(r"Porcentaje de lluvia")
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    return  base64.b64encode(buf.getbuffer()).decode("ascii")
+    # plt.savefig('static/cake2.png')
