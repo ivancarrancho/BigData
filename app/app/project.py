@@ -20,6 +20,7 @@ def hello():
 def map_col():
     map_exist = False
     url_root = request.url_root
+    print('********************')
     print(request.form)
     if request.form:
         if (
@@ -28,9 +29,9 @@ def map_col():
             'Segmento' in request.form and request.form['Segmento']
         ):
             paint_map(
-                ano=request.form['Ano'],
-                mes=request.form['Mes'],
-                segmento=request.form['Segmento']
+                ano=request.form.get('Ano'),
+                mes=request.form.get('Mes'),
+                segmento=request.form.get('Segmento'),
             )
             paint_cake()
             map_exist = f'{url_root}iframe_map.html/'

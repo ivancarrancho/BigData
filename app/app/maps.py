@@ -1,17 +1,8 @@
-import pandas as pd
-import folium
-import os
-import matplotlib.pyplot as plt
 from db import database
+import folium
+import pandas as pd
+import statistics
 import utilities as ut
-import math
-
-# Load the shape of the zone (US states)
-# Find the original file here: https://github.com/python-visualization/folium/tree/master/examples/data
-# You have to download this file and set the directory where you saved it
-
-from couchbase.n1ql import CONSISTENCY_REQUEST
-from couchbase.n1ql import N1QLQuery
 
 city_list = {
     'AMAZONAS': 'AMAZONAS',
@@ -53,28 +44,41 @@ city_list = {
 def paint_map(ano, mes, segmento):
     connect = database.get_default_bucket()
 
-    query_str = 'SELECT Zona, Segmento, sum(venta_neta) as price_sum, sum(Unds) as units_sum FROM `app` WHERE type="product" AND Ano=$ano AND Mes=$mes AND Segmento=$segmento group by Zona, Segmento'
-    q = N1QLQuery(
-        query_str,
-        bucket='app',
-        ano=int(ano),
-        mes=int(mes),
-        segmento=segmento
-    )
+    start_key = f'{int(ano)}, {int(mes)}, "{segmento}"'
+    end_key = f'{int(ano)}, {int(mes)}, "{segmento}"'
 
-    q.consistency = CONSISTENCY_REQUEST
-    response_list = []
-    print(q)
-    for doc in connect.n1ql_query(q):
-        response_list.append(doc)
+    response = connect.query(
+        'dev_product',
+        'count',
+        query='count?stale=false&connection_timeout=60000&inclusive_end=true&reduce=false&startkey=[{}]&endkey=[{}]&skip=0&full_set=true'.format(
+            start_key,
+            end_key
+        )
+    )
+    result_list = []
+    for r in response:
+        result_list.append(r.value)
+
+    result = {}
+
+    for res in result_list:
+        city = res[0]
+        price = res[1]
+        if city in result:
+            values = result[city]
+            values.append(price)
+            result.update({city: values})
+        else:
+            values = [price]
+            result.update({city: values})
+
+    for key, value in result.items():
+        result[key] = statistics.mean(value)
 
     data_map = []
-    for data in response_list:
-        data_map.append([city_list.get(data['Zona']), data['price_sum']])
+    for key, value in result.items():
+        data_map.append([city_list.get(key), value])
 
-    state_unemployment = 'city_files/us_example.csv'
-    state_data = pd.read_csv(state_unemployment)
-    print(state_data)
     m = folium.Map(location=[4.6482837, -74.2478938], zoom_start=6)
 
     # Add the color for the chloropleth:
@@ -143,7 +147,7 @@ def paint_cake():
 
 def loadFileProducts():
     print('**********leyendo')
-    conect = database.get_default_bucket()
+    connect = database.get_default_bucket()
 
     headers = [
         'V-P',
@@ -167,12 +171,11 @@ def loadFileProducts():
     print('**********termino de leer')
 
     for data in dfs.as_matrix():
-        document = {}
+        document = {'type': 'product'}
         for position, header in enumerate(headers):
+            document.update({header: data[position]})
 
-            document.update({header: data[position], 'type': 'product'})
-
-        conect.upsert(ut.generate_id(), document)
+        connect.upsert(ut.generate_id(), document)
 
 
 def loadFileWeather():
