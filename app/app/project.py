@@ -9,12 +9,24 @@ import pandas as pd
 from maps import paint_map
 from maps import paint_cake
 from maps import paint_g
+from maps import total_products
+from maps import total_weather
+from maps import total_sold
 
 
 @app.route("/")
 def hello():
+    total_p = total_products()[0]
+    total_w = total_weather()[0]
+    total_s = total_sold()[0]
 
-    return render_template('hello.html')
+    return render_template(
+        'hello.html',
+        total_p=total_p,
+        total_weather=total_w,
+        total_docs=total_p + total_w,
+        total_s=total_s,
+    )
 
 
 @app.route("/map/", methods=['POST', 'GET'])
@@ -51,20 +63,31 @@ def map_col():
 
 @app.route("/map2/", methods=['POST', 'GET'])
 def map_col2():
+    map_exist = False
     url_root = request.url_root
-    print(request.form)
-    image = ' '
+    ano = ''
+    segmento = ''
     if request.form:
         if (
             'Ano' in request.form and request.form['Ano'],
             'Segmento' in request.form and request.form['Segmento']
         ):
+            ano = request.form['Ano']
+            segmento = request.form['Segmento']
             image = paint_g(
                 ano=request.form['Ano'],
                 segmento=request.form['Segmento']
             )
 
-    return render_template('map2.html', url_root=url_root, map_exist=image)
+            map_exist = image
+
+    return render_template(
+        'map2.html',
+        url_root=url_root,
+        map_exist=map_exist,
+        ano=ano,
+        segmento=segmento
+    )
 
 
 @app.route('/iframe_map.html/')

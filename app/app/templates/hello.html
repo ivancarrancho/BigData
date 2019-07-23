@@ -13,14 +13,17 @@
 <body>
     <section class="hero is-dark">
         <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    <i>Sales Forces</i>
-                </h1>
-                <h2 class="subtitle">
-                    <i>Uniphos Plant Limited</i>
-                </h2>
-            </div>
+            <a href="http://localhost:8888/" style='color:white'>
+                <div class="container">
+                    <h1 class="title">
+                        <i>Sales Forces</i>
+                        </a>
+                    </h1>
+                    <h2 class="subtitle">
+                        <i>Uniphos Plant Limited</i>
+                    </h2>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -43,10 +46,10 @@
                     </p>
                     <ul class="menu-list">
                         <li>
-                            <a class="">Manage Sales Forces</a>
+                            <a class="">Gráficos</a>
                             <ul>
-                                <li><a href="http://localhost:8888/map/">Departamento por producto vendido</a></li>
-                                <li><a href="http://localhost:8888/map2/">Departamento por producto vendido</a></li>
+                                <li><a href="http://localhost:8888/map/">Ventas por producto</a></li>
+                                <li><a href="http://localhost:8888/map2/">Clima vs ventas</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -57,7 +60,7 @@
                 <div class="level">
                     <div class="level-left">
                         <div class="level-item">
-                            <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                            <i class="fa fa-cog"></i>
                             <span class="sr-only">Loading...</span>
                             <div class="title">Dashboard
                             </div>
@@ -74,8 +77,8 @@
                 <div class="columns is-multiline">
                     <div class="column">
                         <div class="box">
-                            <div class="heading">Ventas totales</div>
-                            <div class="title">{{ total_sale }}</div>
+                            <div class="heading">Cantidad de productos</div>
+                            <div class="title">{{ total_p }}</div>
                             <div class="level">
                                 <div class="level-item">
                                     <div class="">
@@ -92,8 +95,8 @@
 
                     <div class="column">
                         <div class="box">
-                            <div class="heading">Ventas totales</div>
-                            <div class="title">{{ total_sale }}</div>
+                            <div class="heading">Documentos de clima procesados</div>
+                            <div class="title">{{ total_weather }}</div>
                             <div class="level">
                                 <div class="level-item">
                                     <div class="">
@@ -110,8 +113,8 @@
 
                     <div class="column">
                         <div class="box">
-                            <div class="heading">Ventas totales</div>
-                            <div class="title">{{ total_sale }}</div>
+                            <div class="heading">Total vendido entre 2014 - 2019</div>
+                            <div class=""><b>{{ total_s }}$ </b></div>
                             <div class="level">
                                 <div class="level-item">
                                     <div class="">
@@ -130,7 +133,7 @@
                     <div class="level-item has-text-centered">
                         <div>
                             <p class="heading">Cantidad de datos procesados</p>
-                            <p class="title">773677</p>
+                            <p class="title">{{ total_docs }}</p>
                         </div>
                     </div>
                 </nav>
@@ -139,47 +142,21 @@
                     <div class="column is-6">
                         <div class="panel">
                             <p class="panel-heading">
-                                Expenses: Daily - $700
                             </p>
                             <div class="panel-block">
                                 <figure class="image is-16x9">
-                                    <img src="/static/cake.png" />
-                                </figure>
+                                        <img src="/static/average_cake.png" />
+                                    </figure>
                             </div>
                         </div>
                     </div>
                     <div class="column is-6">
                         <div class="panel">
                             <p class="panel-heading">
-                                Refunds: Daily - $200
                             </p>
                             <div class="panel-block">
                                 <figure class="image is-16x9">
-                                    <img src="https://placehold.it/1280x720" />
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <div class="panel">
-                            <p class="panel-heading">
-                                Something
-                            </p>
-                            <div class="panel-block">
-                                <figure class="image is-16x9">
-                                    <img src="https://placehold.it/1280x720" />
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <div class="panel">
-                            <p class="panel-heading">
-                                Something Else
-                            </p>
-                            <div class="panel-block">
-                                <figure class="image is-16x9">
-                                    <img src="https://placehold.it/1280x720" />
+                                        <img src="/static/quantity_cake.png" />
                                 </figure>
                             </div>
                         </div>
