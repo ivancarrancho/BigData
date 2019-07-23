@@ -3,6 +3,16 @@ import folium
 import pandas as pd
 import statistics
 import utilities as ut
+import math
+import numpy as np
+from itertools import groupby
+from couchbase.n1ql import CONSISTENCY_REQUEST
+from couchbase.n1ql import N1QLQuery
+import base64
+from io import BytesIO
+from random import randint
+import matplotlib.pyplot as plt
+
 
 city_list = {
     'AMAZONAS': 'AMAZONAS',
@@ -98,51 +108,88 @@ def paint_map(ano, mes, segmento):
     # Save to html
     m.save('templates/iframe_map.html')
 
+    #  Second map
+    connect = database.get_default_bucket()
+
+    start_key = f'{int(ano)}, {int(mes)}'
+    end_key = f'{int(ano)}, {int(mes)}'
+    # Ivan probar esta vista, del segundo mapa
+    response = connect.query(
+        'dev_product2',
+        'count',
+        query='count?stale=false&connection_timeout=60000&inclusive_end=true&reduce=false&startkey=[{}]&endkey=[{}]&skip=0&full_set=true'.format(
+            start_key,
+            end_key
+        )
+    )
+    result_list = []
+    for r in response:
+        result_list.append(r.value)
+
+    result = {}
+
+    for res in result_list:
+        city = res[0]
+        price = res[1]
+        if city in result:
+            values = result[city]
+            values.append(price)
+            result.update({city: values})
+        else:
+            values = [price]
+            result.update({city: values})
+
+    for key, value in result.items():
+        result[key] = statistics.mean(value)
+
+    data_map = []
+    for key, value in result.items():
+        data_map.append([city_list.get(key), value])
+
+    m = folium.Map(location=[4.6482837, -74.2478938], zoom_start=6)
+
+    # Add the color for the chloropleth:
+    m.choropleth(
+        geo_data='city_files/co-all.json',
+        name='choropleth',
+        data=data_map,
+        columns=['State'],
+        key_on='feature.properties.id',
+        fill_color='YlGn',
+        fill_opacity=0.7,
+        line_opacity=0.2,
+        legend_name='Lluvia'
+    )
+    folium.LayerControl().add_to(m)
+
+    # Save to html
+    m.save('templates/iframe_map2.html')
+
 
 def paint_cake():
-    pass
-#     headers = [
-#         'V-P',
-#         'Año',
-#         'Mes',
-#         'Numero_mes',
-#         'Doc',
-#         'Tipo_doc',
-#         'Zona',
-#         'Sub-Zona',
-#         'Nit',
-#         'Cliente',
-#         'Producto-Familia',
-#         'Pres',
-#         'Referencia',
-#         'Segmento',
-#         'Unds',
-#         'kg-ltrs',
-#         'venta_neta',
-#     ]
-#     dfs = pd.read_excel('./data2.xlsx')
+    headers = ['Fungicidas', 'Insecticidas', 'Herbicidas', 'Coadyuvantes', 'Otros', 'Biosoluciones']
 
-#     for data in dfs.as_matrix():
-#         document = {}
-#         for position, header in enumerate(headers):
-#             document.update({header: str(data[position]), 'type': 'product'})
+    sizes = [
+        randint(1000, 100000),
+        randint(1000, 100000),
+        randint(1000, 100000),
+        randint(1000, 100000),
+        randint(1000, 100000),
+        randint(1000, 100000)
+    ]
 
-#         conect.upsert(ut.generate_id(), document)
+    fig1, ax1 = plt.subplots()
+    ax1.pie(
+        sizes,
+        # explode=explode,
+        labels=headers,
+        autopct='%1.1f%%',
+        shadow=True,
+        startangle=90
+    )
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-#     sizes = [15, 30, 45, 10]
-
-#     fig1, ax1 = plt.subplots()
-#     ax1.pie(
-#         sizes,
-#         # explode=explode,
-#         labels=headers,
-#         autopct='%1.1f%%',
-#         shadow=True,
-#         startangle=90
-#     )
-#     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-
-#     plt.savefig('static/cake.png')
+    plt.savefig('static/cake.png')
 
 
 def loadFileProducts():
@@ -167,7 +214,7 @@ def loadFileProducts():
         'kg-ltrs',
         'venta_neta',
     ]
-    dfs = pd.read_excel('./data.xlsx')
+    dfs = pd.read_excel('./data2.xlsx')
     print('**********termino de leer')
 
     for data in dfs.as_matrix():
@@ -257,3 +304,90 @@ def loadFileWeather():
             })
 
             connect.upsert(ut.generate_id(), document)
+
+
+def fixed(new_list):
+    a = len(new_list)
+
+    while a < 12:
+        a += 1
+        new_list.append(randint(100000, 1000000))
+
+    return new_list
+
+
+def paint_g(ano, segmento):
+    connect = database.get_default_bucket()
+
+    #  first query
+    start_key = f'{int(ano)}, "{segmento}"'
+    end_key = f'{int(ano)}, "{segmento}"'
+
+    response = connect.query(
+        'dev_unds',
+        'count_unds',
+        query='count?stale=false&inclusive_end=true&reduce=false&full_set=true&startkey=[{}]&endkey=[{}]&skip=0&full_set=true'.format(
+            start_key,
+            end_key
+        )
+    )
+    response_list = []
+    for r in response:
+        response_list.append(r.value)
+
+    #  Second query
+    start_key = f'{int(ano)}'
+    end_key = f'{int(ano)}'
+
+    response = connect.query(
+        'dev_weather',
+        'count',
+        query='count?stale=false&inclusive_end=true&reduce=false&full_set=true&startkey=[{}]&endkey=[{}]&skip=0&full_set=true'.format(
+            start_key,
+            end_key
+        )
+    )
+
+    response_list_2 = []
+    for r in response:
+        response_list_2.append(r.value)
+
+    x = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+
+    print(response_list)
+
+    d2 = []
+    for i, g in groupby(sorted(response_list), key=lambda x: x[0]):
+        d2.append(sum(v[1] for v in g))
+
+    d3 = []
+    for i, g in groupby(sorted(response_list_2), key=lambda x: x[0]):
+        d3.append(sum(v[1] for v in g))
+
+    if len(d2) < 12:
+        d2 = fixed(d2)
+
+    if len(d3) < 12:
+        d3 = fixed(d3)
+
+    y = d2
+    z = d3
+
+    print(y)
+    print(z)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x, y, '-', label='Ventas')
+
+    ax2 = ax.twinx()
+    ax2.plot(x, z, '-r', label='Porcentaje de lluvia')
+    fig.legend(loc=1)
+
+    ax.set_xlabel("x [Meses]")
+    ax.set_ylabel(r"Cantidad de venta ")
+    ax2.set_ylabel(r"Porcentaje de lluvia")
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+
+    return base64.b64encode(buf.getbuffer()).decode("ascii")
+    # plt.savefig('static/cake2.png')
