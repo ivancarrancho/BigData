@@ -13,14 +13,17 @@
 <body>
     <section class="hero is-dark">
         <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    <i>Sales Forces</i>
-                </h1>
-                <h2 class="subtitle">
-                    <i>Uniphos Plant Limited</i>
-                </h2>
-            </div>
+            <a href="http://localhost:8888/" style='color:white'>
+                <div class="container">
+                    <h1 class="title">
+                        <i>Sales Forces</i>
+                        </a>
+                    </h1>
+                    <h2 class="subtitle">
+                        <i>Uniphos Plant Limited</i>
+                    </h2>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -43,10 +46,10 @@
                     </p>
                     <ul class="menu-list">
                         <li>
-                            <a class="">Manage Sales Forces</a>
+                            <a class="">Gráficos</a>
                             <ul>
-                                <li><a href="http://localhost:8888/map/">Departamento por producto vendido</a></li>
-                                <li><a href="http://localhost:8888/map2/">Departamento por producto vendido</a></li>
+                                <li><a href="http://localhost:8888/map/">Ventas por producto</a></li>
+                                <li><a href="http://localhost:8888/map2/">Clima vs ventas</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -57,10 +60,8 @@
                 <div class="level">
                     <div class="level-left">
                         <div class="level-item">
-                            <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-                            <span class="sr-only">Loading...</span>
-                            <div class="title">Dashboard
-                            </div>
+                            <i class="fa fa-cog"></i>
+                            <div class="title">Dashboard {{ segmento }} - {{ mes }} - {{ ano }}</div>
                         </div>
 
                     </div>
@@ -73,10 +74,8 @@
                     </div>
                 </div>
                 <div>
+                    <h1>Mapa de ventas por producto</h1>
                     <header class="hero is-ligth">
-                        <h1>Mapa de ventas por producto</h1>
-                        <h2>{{ ano }} - {{ mes }} - {{ segmento }}</h2>
-
                     </header>
                     <form action="{{ url_root }}map/" method="POST" id="map-form">
                         <select name="Segmento" form="map-form">
@@ -111,18 +110,25 @@
                             <option value="2018" name="2018">2018</option>
                             <option value="2019" name="2019">2019</option>
                         </select>
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" onclick="myFunction()">
                     </form>
 
                     {% if map_exist %}
                         <iframe src="{{ map_exist }}" height="600" width="600" style="height: -webkit-fill-available;"></iframe>
                         <iframe src="{{ map2_exist }}" height="600" width="600" style="height: -webkit-fill-available;"></iframe>
                         <img src="/static/cake.png" height="400" width="520" />
+                    {% else %}
+                        <img src="/static/tenor.gif" id="whatever" hidden/>
                     {% endif %}
                 </div>
             </main>
         </div>
     </div>
 </body>
-
+<script>
+    function myFunction() {
+        let p = document.getElementById('whatever');
+        p.removeAttribute("hidden");
+    }
+</script>
 </html>

@@ -51,6 +51,55 @@ city_list = {
 }
 
 
+def total_products():
+    connect = database.get_default_bucket()
+
+    response = connect.query(
+        'dev_product',
+        'count',
+        query='count?stale=false&reduce=true&full_set=true'
+    )
+    result_list = []
+
+    for r in response:
+        result_list.append(r.value)
+
+    return result_list
+
+
+def total_sold():
+    connect = database.get_default_bucket()
+
+    response = connect.query(
+        'dev_fix',
+        'fix',
+        query='count?stale=false&reduce=true&full_set=true'
+    )
+
+    result_list = []
+
+    for r in response:
+        result_list.append(r.value)
+
+    return result_list
+
+
+def total_weather():
+    connect = database.get_default_bucket()
+
+    response = connect.query(
+        'dev_weather',
+        'count',
+        query='count?stale=false&reduce=true&full_set=true'
+    )
+    result_list = []
+
+    for r in response:
+        result_list.append(r.value)
+
+    return result_list
+
+
 def paint_map(ano, mes, segmento):
     connect = database.get_default_bucket()
 
@@ -164,6 +213,41 @@ def paint_map(ano, mes, segmento):
 
     # Save to html
     m.save('templates/iframe_map2.html')
+
+
+def average_cake(headers, sizes, ano, segmento):
+    fig1, ax1 = plt.subplots()
+    ax1.pie(
+        sizes,
+        labels=headers,
+        autopct='%1.1f%%',
+        shadow=True,
+        startangle=90
+    )
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+    plt.title(
+        f"Promedio de ventas {ano} - {segmento}",
+        bbox={'facecolor':'0.8', 'pad':5}
+    )
+    plt.savefig('static/average_cake.png')
+
+
+def quantity_cake(headers, sizes, ano, segmento):
+    fig1, ax1 = plt.subplots()
+    ax1.pie(
+        sizes,
+        labels=headers,
+        autopct='%1.1f%%',
+        shadow=True,
+        startangle=90
+    )
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    plt.title(
+        f"Promedio de lluvia {ano} - {segmento}",
+        bbox={'facecolor':'0.8', 'pad':5}
+    )
+    plt.savefig('static/quantity_cake.png')
 
 
 def paint_cake():
@@ -372,6 +456,8 @@ def paint_g(ano, segmento):
 
     y = d2
     z = d3
+    average_cake(x, d2, ano, segmento)
+    quantity_cake(x, d3, ano, segmento)
 
     print(y)
     print(z)
